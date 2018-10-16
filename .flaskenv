@@ -1,1 +1,2 @@
 FLASK_APP=phrasal.py
+FLASK_ENV=development

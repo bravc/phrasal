@@ -4,10 +4,10 @@ import random
 import math
 from nltk.corpus import gutenberg
 from nltk.tokenize.treebank import TreebankWordDetokenizer
+from nltk.corpus import brown
 from flask import Flask
 from flask import request, abort, render_template, jsonify
 app = Flask(__name__)
-
 
 types = {
     'JJ': 'adjective',
@@ -90,7 +90,11 @@ def randomize(original, converted):
     for ran in random_indexs:
         list_o[ran] = list_c[ran]
 
-    return twd.detokenize(list_o)
+    resp = {
+        'original': original,
+        'converted': twd.detokenize(list_o)
+    }
+    return jsonify(resp)
 
 
 def load_sentence(original_sentence):
@@ -117,6 +121,9 @@ def load_sentence(original_sentence):
 
 def sneak():
     twd = TreebankWordDetokenizer()
-    sent = inaugural.sents('1789-Washington.txt')
+    print(brown.sents(categories=['adventure','mystery']))
+    sent = brown.sents(categories=['adventure','mystery'])
     for s in sent:
         load_sentence(twd.detokenize(s))
+
+# sneak()
