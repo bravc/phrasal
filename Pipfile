@@ -6,6 +6,9 @@ name = "pypi"
 [packages]
 nltk = "*"
 flask = "*"
+gunicorn = "*"
+"psycopg2" = "*"
+python-dotenv = "*"
 
 [dev-packages]
 

@@ -4,7 +4,6 @@ import random
 import math
 from nltk.corpus import gutenberg
 from nltk.tokenize.treebank import TreebankWordDetokenizer
-from nltk.corpus import inaugural
 from flask import Flask
 from flask import request, abort, render_template, jsonify
 app = Flask(__name__)
@@ -121,5 +120,3 @@ def sneak():
     sent = inaugural.sents('1789-Washington.txt')
     for s in sent:
         load_sentence(twd.detokenize(s))
-
-sneak()
