@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+
+    <button onclick="press()"> Press for rand sentence</button>
+    <p id=1></p>
+
+</div>
+
+<script>
+
+
+    async function press() {
+        const url = "http://localhost:5000/random"
+        let response = await fetch(url, {
+            headers: {
+                'Content-Type': 'text/html',
+                'Accept': 'text/html'
+            }
+        });
+        let data = await response.text();
+        console.log(data);
+        document.getElementById("1").innerHTML = data;
+        return data;
+    }
+
+
+
+</script>
+
+{% endblock %}
